@@ -2,16 +2,16 @@ import os
 from twilio.rest import Client
 import requests, states
 
-#account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
-#auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
-client = Client()
+account_sid = os.environ['TWILIO_ACCOUNT_SID']
+auth_token = os.environ['TWILIO_AUTH_TOKEN']
+client = Client(account_sid, auth_token)
 
 def send_sms():
     message = client.messages \
         .create(
              body='Hello, I\'m AirQualityBot. What city are you in? Ex. Portland, OR',
-             from_=os.environ.get('TWILIO_NUMBER'),
-             to=os.environ.get('PERSONAL_NUMBER')
+             from_=os.environ['TWILIO_NUMBER'],
+             to=os.environ['PERSONAL_NUMBER']
          )
     print(message.sid)
 
@@ -23,7 +23,7 @@ def getReply(body):
 	if len(result[1]) == 2: #convert state abbreviation
 		result[1] = states.us_state_abbrev[result[1]]
 
-	location = {'city': result[0], 'state': result[1], 'country':'USA', 'key': os.environ.get('API_KEY')}
+	location = {'city': result[0], 'state': result[1], 'country':'USA', 'key': os.environ['API_KEY']}
 	response = requests.get(aqi_url, params=location).json()
 
 	if 'success' in response['status']:
