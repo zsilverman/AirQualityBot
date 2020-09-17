@@ -1,5 +1,6 @@
+import os
 from twilio.rest import Client
-import requests, os, states
+import requests, states
 
 account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
 auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
