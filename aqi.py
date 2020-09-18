@@ -1,28 +1,27 @@
-import os
 from twilio.rest import Client
-#from dotenv import load_dotenv
-import requests, states
+#from dotenv import load_dotenv #dev env only
+import requests, states, os
 
 account_sid = os.getenv('TWILIO_ACCOUNT_SID')
 auth_token = os.getenv('TWILIO_AUTH_TOKEN')
 client = Client(account_sid, auth_token)
 
-def send_sms():
+def send_sms(sender):
     message = client.messages \
         .create(
              body='Hello, I\'m AirQualityBot. What city are you in? Ex. Portland, OR',
              from_=os.getenv('TWILIO_NUMBER'),
-             to=message.from_
+             to=sender
          )
     print(message.sid)
 
 def getReply(body):
-	result = [x.strip() for x in body.split(',')] #split location by commma separated fields
+	result = [x.strip() for x in body.split(',')] #parse location
 	aqi_url = 'http://api.airvisual.com/v2/city'
 	API_KEY = os.getenv('API_KEY')
 
-	if len(result[1]) == 2: #convert state abbreviation
-		result[1] = result[1].upper() #capitalize 
+	if len(result[1]) == 2: #convert state abbreviation from CA->California for API
+		result[1] = result[1].upper() #capitalize ca -> CA for state lookup
 		result[1] = states.us_state_abbrev[result[1]]
 
 	location = {'city': result[0], 'state': result[1], 'country':'USA', 'key': API_KEY}
