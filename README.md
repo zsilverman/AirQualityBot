@@ -5,9 +5,10 @@ the bot will send back the AQI of the location you requested. Send "Hi" again to
 the AQI of a different city. 
 
 This was my first Flask app built using Python and my first time deploying and hosting. 
-The biggest challenge I overcame was using enviornment variables. The Twilio tutorials helped a ton!
-In the future, I want to add a subscriber feature for text alerts on days with unhealthy air quality.
-Living in California during fire season, this would be very useful. 
+The biggest challenge I overcame was learning how to use enviornment variables in my dev and production enviornment.
+The Twilio tutorials helped a ton for using Twilio Programmable SMS. 
+In the future, I want to add a subscriber feature for text alerts to automaticaly send on days with unhealthy air quality.
+Living in California during this past fire season gave me the idea for this use of Twilio services. 
 
 ## Try it out for yourself: 
 Text ``Hi`` to (415)449-8470.
