@@ -12,7 +12,7 @@ def send_sms():
         .create(
              body='Hello, I\'m AirQualityBot. What city are you in? Ex. Portland, OR',
              from_=os.getenv('TWILIO_NUMBER'),
-             to=os.getenv('PERSONAL_NUMBER')
+             to=message.from_
          )
     print(message.sid)
 

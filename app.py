@@ -14,7 +14,7 @@ def incoming_sms():
     # Start our TwiML response
     resp = MessagingResponse()
 
-    if 'Hi' in body: #or 'hi' or 'Hello' or 'Hi': #body != 'hello' or 'hi' or 'Hello' or 'Hi': 
+    if 'Hi' in body:
         aqi.send_sms()
     else:
         replyText = aqi.getReply(body)
