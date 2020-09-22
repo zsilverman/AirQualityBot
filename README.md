@@ -11,7 +11,7 @@ In the future, I want to add a subscriber feature for text alerts to automatical
 Living in California during this past fire season gave me the idea for this use of Twilio services. 
 
 ## Try it out for yourself: 
-Text ``Hi`` to (415)449-8470.
+Text `Hi` or `Hello` to (415)449-8470.
 
 ---
 
